@@ -65,19 +65,17 @@ document.addEventListener('click', function(e) {
 });
 
 function sendToWa() {
-    var nome = document.getElementById('wa_nome').value.trim();
     var empresa = document.getElementById('wa_empresa').value;
     var valor = document.querySelector('input[name="wa_valor"]:checked');
     var situacao = document.querySelector('input[name="wa_situacao"]:checked');
     
-    if(!nome || !empresa || !valor || !situacao) {
+    if(!empresa || !valor || !situacao) {
         alert("Por favor, preencha todos os campos para iniciarmos sua análise gratuita.");
         return;
     }
     
     var msg = "Olá! Gostaria de uma avaliação sobre Multipropriedade.\n\n" + 
-              "*Nome:* " + nome +
-              "\n*Multipropriedade:* " + empresa + 
+              "*Multipropriedade:* " + empresa + 
               "\n*Valor Investido:* " + valor.value + 
               "\n*Situação:* " + situacao.value;
               
