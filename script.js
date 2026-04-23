@@ -91,48 +91,76 @@ function initTestimonialCarousel() {
     const track = document.querySelector('.carousel-track');
     const nextBtn = document.querySelector('.carousel-btn.next');
     const prevBtn = document.querySelector('.carousel-btn.prev');
-    
+    const container = document.querySelector('.carousel-container');
+
     if (!track || !nextBtn || !prevBtn) return;
-    
+
     let currentIndex = 0;
-    
+    const cards = Array.from(track.children);
+    const totalCards = cards.length;
+
+    // Create dots
+    let dotsContainer = document.querySelector('.carousel-dots');
+    if (!dotsContainer) {
+        dotsContainer = document.createElement('div');
+        dotsContainer.className = 'carousel-dots';
+        container.appendChild(dotsContainer);
+    }
+    dotsContainer.innerHTML = '';
+    cards.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+
     function getCardsToShow() {
         if (window.innerWidth > 1024) return 3;
         if (window.innerWidth > 768) return 2;
         return 1;
     }
-    
+
+    function updateDots() {
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
     function updateCarousel() {
         const cardsToShow = getCardsToShow();
-        const cardWidth = track.firstElementChild.offsetWidth + 20; // width + gap
-        const maxIndex = track.children.length - cardsToShow;
-        
+        const cardWidth = cards[0].offsetWidth + 20;
+        const maxIndex = totalCards - cardsToShow;
+
         if (currentIndex > maxIndex) currentIndex = maxIndex;
         if (currentIndex < 0) currentIndex = 0;
-        
+
         track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        
-        // Update button states
-        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+
+        prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.4' : '1';
+        updateDots();
     }
-    
-    nextBtn.addEventListener('click', () => {
+
+    function goTo(index) {
         const cardsToShow = getCardsToShow();
-        const maxIndex = track.children.length - cardsToShow;
-        if (currentIndex < maxIndex) {
-            currentIndex++;
-            updateCarousel();
+        const maxIndex = totalCards - cardsToShow;
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+
+    // Touch swipe support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            goTo(currentIndex + (diff > 0 ? 1 : -1));
         }
-    });
-    
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
-    });
-    
+    }, { passive: true });
+
     window.addEventListener('resize', updateCarousel);
     updateCarousel();
 }
