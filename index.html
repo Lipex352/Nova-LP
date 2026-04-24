@@ -11,23 +11,31 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KWTPNV2X');</script>
-    <!-- End Google Tag Manager -->
+
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2014801999129793');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=2014801999129793&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWTPNV2X" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
 
     <nav id="navbar">
         <div class="container nav-content">
@@ -47,9 +55,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <h1>Precisa de orientação jurídica em <span class="serif-italic">multipropriedade imobiliária?</span>
-                </h1>
+            <div class="hero-content" style="max-width: 1100px; margin: 0 auto; text-align: center;">
+                <h1>Precisa de orientação jurídica em&nbsp;<span class="serif-italic">multipropriedade imobiliária?</span></h1>
                 <p>Receba uma análise jurídica do seu contrato e entenda, com clareza, quais são seus direitos e as
                     alternativas legais aplicáveis ao seu caso.</p>
                 <div class="hero-btns" style="justify-content: center;">
@@ -466,7 +473,8 @@
                             alt="BM Firma de Advogados" style="height: 55px; width: auto; display: block;">
                     </div>
                     <p style="color: #ffffff; font-weight: 400; font-size: 0.9rem; line-height: 1.6; max-width: 260px;">
-                        Consultoria especializada em direito imobiliário e do consumidor com foco em cotas de multipropriedade e resorts.
+                        Consultoria especializada em direito imobiliário e do consumidor com foco em cotas de
+                        multipropriedade e resorts.
                     </p>
                 </div>
                 <!-- Col 2: Navegação -->
@@ -492,11 +500,13 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin" style="color: #c5a059; width: 24px; height: 24px;"></i>
-                            <span><strong>SEDE MARACANAÚ/CE:</strong> Edifício Business Place, Torre II, 7º andar. Avenida Contorno Norte, nº 57, Jereissati I, Maracanaú/CE – CEP 61900-410.</span>
+                            <span><strong>SEDE MARACANAÚ/CE:</strong> Edifício Business Place, Torre II, 7º andar.
+                                Avenida Contorno Norte, nº 57, Jereissati I, Maracanaú/CE – CEP 61900-410.</span>
                         </li>
                         <li>
                             <i data-lucide="map-pin" style="color: #c5a059; width: 24px; height: 24px;"></i>
-                            <span><strong>SEDE FORTALEZA/CE:</strong> Edifício Central Park, 18º andar. Av. Engenheiro Santana Júnior, nº 3000, Cocó, Fortaleza/CE – CEP 60192-205.</span>
+                            <span><strong>SEDE FORTALEZA/CE:</strong> Edifício Central Park, 18º andar. Av. Engenheiro
+                                Santana Júnior, nº 3000, Cocó, Fortaleza/CE – CEP 60192-205.</span>
                         </li>
                     </ul>
                 </div>
@@ -510,7 +520,8 @@
                 </p>
                 <p class="footer-disclaimer">
                     Não temos ligação com o Google, Facebook ou outras redes sociais | Atuamos exclusivamente com a
-                    prestação de serviços jurídicos | Não oferecemos serviços oficiais do governo | Não compartilhamos seus dados.
+                    prestação de serviços jurídicos | Não oferecemos serviços oficiais do governo | Não compartilhamos
+                    seus dados.
                 </p>
             </div>
             <div class="footer-strip-right">
